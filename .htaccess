@@ -1,0 +1,15 @@
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+
+## If the request is for a valid directory
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+## If the request is for a valid file
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+## If the request is for a valid link
+RewriteCond %{REQUEST_FILENAME} -l
+## don't do anything
+RewriteRule ^ - [L]
+
+RewriteRule ^(index\.php|robots\.txt|favicon\.ico|uploads|images|assets) - [PT,L]
+RewriteRule .* index.php?/$0 [PT,L,QSA]
