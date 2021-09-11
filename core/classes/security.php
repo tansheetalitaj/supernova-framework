@@ -5,11 +5,11 @@ $appName = $GLOBALS['config']['appName'];
 $doc_root = $_SERVER['DOCUMENT_ROOT'];
 
 include $doc_root."/".$appName."/core/phpeas/src/Aes.php";
-
+use PhpAes\Aes;
 
 class security{
 
-	static function EncryptPassword($string, $severity = 'low'){
+	static function EncryptPassword($string, $severity = NULL){
 
     $encryption_key = $GLOBALS['config']['encryption_key'];
 
@@ -17,7 +17,18 @@ class security{
     $mode = 'CBC';
     $iv = '1234567890abcdef';
 
+		$str_strength = strlen($string);
+
     if($encryption_key != ""){
+			if($severity == NULL){
+				if($str_strength <= 3){
+					$severity = 'high';
+				}elseif($str_strength > 3 && $str_strength <= 8) {
+					$severity = 'medium';
+				}else{
+					$severity = 'low';
+				}
+			}
       if($severity == 'high'){
           $b64_sk = base64_encode($encryption_key);
           $b64_string = base64_encode($string);
