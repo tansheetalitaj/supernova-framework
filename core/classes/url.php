@@ -2,10 +2,32 @@
 
 	class url{
 
+
 		static function part($number){
 			$url = explode("?", $_SERVER["REQUEST_URI"]);
 			$parts = explode("/", $url[0]);
 			return (isset($parts[$number])) ? $parts[$number] : false;
+		}
+
+
+		static function post($key){
+			return (isset($_POST[$key])) ? $_POST[$key] : false;
+		}
+
+
+		static function get($key){
+			return (isset($_GET[$key])) ? urldecode($_GET[$key]) : false;
+		}
+
+
+		static function request($key){
+			if(url::get($key)){
+				return url::get($key);
+			}elseif(url::post($key)){
+				return url::post($key);
+			}else{
+				return false;
+			}
 		}
 
 

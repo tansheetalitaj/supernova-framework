@@ -49,15 +49,23 @@ class router{
 
 	static function uri($part){
 		$parts = explode("/", $_SERVER["REQUEST_URI"]);
-		if($parts[2] == $GLOBALS['config']['paths']['index']){
-			$part++;
-		}
+			if(isset($parts[2])){
+				if($parts[2] == $GLOBALS['config']['paths']['index']){
+					$part++;
+				}
+			}
 		return (isset($parts[$part])) ? $parts[$part] : "";
 	}
 
 	private function findCustomRoute(){
-		$uri_1 = router::uri(2);
-		$uri_2 = router::uri(3);
+	    $url_validation_regex = "/^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$/"; 
+		if(preg_match($url_validation_regex, $_SERVER['SERVER_NAME'])){
+			$uri_1 = router::uri(1);
+			$uri_2 = router::uri(2);
+		}else{
+			$uri_1 = router::uri(2);
+			$uri_2 = router::uri(3);
+		}
 		foreach ($this->routes as $key => $route){
 			$parts = $this->routePart($key);
 			if($uri_1 == $parts){
@@ -88,9 +96,15 @@ class router{
 				return $route;
 			}
 		}
-
-		$uri_1 = router::uri(2);
-		$uri_2 = router::uri(3);
+    
+		$url_validation_regex = "/^[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$/"; 
+		if(preg_match($url_validation_regex, $_SERVER['SERVER_NAME'])){
+			$uri_1 = router::uri(1);
+			$uri_2 = router::uri(2);
+		}else{
+			$uri_1 = router::uri(2);
+			$uri_2 = router::uri(3);
+		}
 
 		if($uri_1 == ""){
 			$uri_1 = $GLOBALS['config']['defaults']['controller'];
