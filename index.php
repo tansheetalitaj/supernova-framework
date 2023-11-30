@@ -18,7 +18,15 @@
 			"controller" => "home",			// DEFAULT CONTROLLER NAME
 			"method" => "index"					// DEFAULT METHOD or FUNCTION NAME
 		),
-		"routes" => array(
+		"routes" => array(					// Custom Routes Array
+			"custom-route-1" => array(					// Custom Route URI
+				"controller" => "controller-name",		// Custom Route Controller Name
+				"method" => "nethod-name"				// Custom Route Method/Function Name
+			),
+			"custom-route-2" => array(
+				"controller" => "controller-name",
+				"method" => "nethod-name"
+			)
 		),
 		"database" => array(
 			"host" => "localhost",	// DATABASE HOSTNAME
