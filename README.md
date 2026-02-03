@@ -1,46 +1,42 @@
-# What is SuperNova Framework
+# SuperNova Framework
 
-SuperNova is an Application Development Framework designed for PHP developers who want to build web applications efficiently and quickly. It combines the best of both worlds, merging the simplicity of CodeIgniter and the functionality of Laravel frameworks, offering a powerful toolkit to make your development process more streamlined.
+SuperNova is a lightweight PHP application framework created to explore backend framework architecture, request lifecycles, and modular system design.
 
-## Key Features
+The goal of this project is not to compete with established frameworks, but to better understand how common backend framework components are structured and how design trade-offs affect maintainability, extensibility, and performance.
 
-1. Easy-to-use: SuperNova is built with simplicity in mind, making it easy for developers to start using it right away without a steep learning curve.
-2. Powerful libraries: SuperNova provides a wide range of built-in libraries for common tasks, such as database access, form validation, session management, and more.
-3. Modular structure: The framework is designed with a modular structure, allowing developers to easily integrate and manage various components within their projects.
-4. Extensible: Developers can easily extend the core functionality of SuperNova by creating custom libraries, plugins, and modules.
-5. Secure: SuperNova follows industry best practices to ensure that the applications built with it are secure and reliable.
-6. Performance: The framework is optimized for high performance, ensuring that applications built with it are fast and responsive.
+## Architectural Focus
 
-## Server Requirements
+SuperNova is structured around a modular MVC-style architecture with clear separation of concerns. Key architectural areas explored in this project include:
 
-To run a web application built with the SuperNova Framework, you need to have the following server requirements:
+- Front controller pattern and request lifecycle handling
+- Routing and URL resolution
+- Modular application structure
+- Configuration and extensibility mechanisms
+- Separation between core framework logic and application code
 
-1. PHP version 7.1 or newer is recommended. Although it may work with PHP 5.6, it is highly advised against using such an outdated version due to security, performance, and feature limitations.
-2. A web server like Apache or Nginx to serve your application.
-3. A database server like MySQL, MariaDB, PostgreSQL, or SQLite, depending on your application's requirements.
+The framework intentionally remains lightweight to make architectural decisions explicit and easier to reason about.
 
-## Installation
+## Design Philosophy
 
-Download or Clone Repo to your Server
+SuperNova draws inspiration from frameworks such as Laravel and CodeIgniter, while avoiding unnecessary abstraction layers. The emphasis is on:
 
-```bash
-git clone https://github.com/tansheetalitaj/supernova-framework.git
-cd supernova-framework
-```
+- Readability over cleverness
+- Explicit structure over hidden magic
+- Simplicity over feature completeness
 
-Download the latest version of the SuperNova Framework from the official repository.
-Extract the downloaded archive to your web server's document root or a specific subdirectory.
-Ensure that the necessary file and directory permissions are set, allowing the framework to write and manage files as needed.
-Configure your web server to point to the public directory of the SuperNova installation as the document root.
-Create a new database and configure the database connection settings in the appropriate configuration file within the SuperNova installation.
+This approach allows the framework to serve as a learning and experimentation platform for backend system design rather than a full production replacement.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Project Structure
 
-Please make sure to update tests as appropriate.
+- `core/` – core framework logic including routing and request handling
+- `app/` – application-level code
+- `assets/` – static assets
+- `index.php` – application entry point (front controller)
+
+## Usage Notes
+
+This project is primarily intended for exploration and experimentation with backend framework concepts. While functional, it is not positioned as a production-ready alternative to mature frameworks.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
-## Conclusion
-With the server requirements met and the framework installed, you can now start building your web application using the SuperNova Framework. Remember to follow the documentation and best practices to ensure that your application is secure, performant, and scalable.
+MIT
